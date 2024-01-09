@@ -46,6 +46,7 @@ functions:
   user: ${file(src/handlers/user/service.yml)}
   auth: ${file(src/handlers/auth/service.yml)}
   apps: ${file(src/handlers/apps/service.yml)}
+  class: ${file(src/handlers/class/service.yml)}
 
 plugins:
   - serverless-webpack
