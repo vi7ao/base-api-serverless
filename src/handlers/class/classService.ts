@@ -21,7 +21,7 @@ const remove = async (classId: string, user: IUser) => {
   const classe = await Class.findById(classId)
 
   if (!classe) {
-    throw classErrors.buildClassNotFoundError()
+    throw classErrors.buildClassNotFoundError(classId)
   }
 
   const removedClass = await Class.findByIdAndRemove(classId)
@@ -45,7 +45,7 @@ const update = async ({ _id, ...body }, user: IUser) => {
   const updatedClass = await Class.findByIdAndUpdate(_id, body, { new: true })
 
   if (!updatedClass) {
-    throw classErrors.buildClassNotFoundError()
+    throw classErrors.buildClassNotFoundError(_id)
   }
 
   await logService.create({
@@ -96,7 +96,7 @@ const findById = async (classId: string, user: IUser) => {
   const classe = await Class.findById(classId)
 
   if (!classe) {
-    throw classErrors.buildClassNotFoundError()
+    throw classErrors.buildClassNotFoundError(classId)
   }
 
   await logService.create({
